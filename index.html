@@ -23,17 +23,17 @@
         </div>
         <div class="form-group">
           <p>Please select from the toppings below:</p>
-          <input type="checkbox" name="topping" value="extra cheese">Extra cheese<br>
-          <input type="checkbox" name="topping" value="mushroom">Mushroom<br>
-          <input type="checkbox" name="topping" value="pepperoni">Pepperoni<br>
-          <input type="checkbox" name="topping" value="pineapple">Pineapple<br>
+          <input type="checkbox" name="topping" value="extra cheese">Extra cheese, + .50<br>
+          <input type="checkbox" name="topping" value="mushroom">Mushroom, + .50 <br>
+          <input type="checkbox" name="topping" value="pepperoni">Pepperoni, + 1.00<br>
+          <input type="checkbox" name="topping" value="pineapple">Pineapple, + 1.00<br>
         </div>
         <button id="button-order" type="submit" class="btn btn-success">Order</button>
       </form>
 
-      <div>
-        <p id="pizza-ordered">Happy eating! Your order is on its way! Please find summary of your order:</p>
-        <ul id="your-pizza">
+      <div class="summary">
+        <p>Happy eating! Your order is on its way! Please find summary of your order: <span id="summary"></span></p>
+        <ul id="your-total">
         </ul>
       </div>
 

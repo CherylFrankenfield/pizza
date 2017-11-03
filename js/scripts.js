@@ -1,5 +1,5 @@
 // Business Logic here
-function Pizza(size, topping) {
+function Pizza(size, topping, price, yourSizePrice, yourToppingPrice) {
   this.size = size;
   this.topping = topping;
   this.price;
@@ -7,35 +7,37 @@ function Pizza(size, topping) {
   this.yourToppingPrice();
 }
 
-Pizza.prototype.yourCost = function() {
-  return this.yourSizePrice() += this.yourToppingPrice();
-}
-
 Pizza.prototype.yourSizePrice = function() {
   if (this.size === "Puny small") {
-    this.price = "8.00";
+    this.price = 8.00;
   } else if (this.size === "Boring medium") {
-    this.price = "12.00";
+    this.price = 12.00;
   } else if (this.size === "Go big or go home large") {
-    this.price = "14.00";
+    this.price = 14.00;
   }
 }
 
 Pizza.prototype.yourToppingPrice = function() {
   if (this.topping === "extra cheese" || "mushroom") {
-    this.price = ".50";
+    this.price = .50;
   } else if (this.topping === "pepperoni" || "pineapple") {
-    this.price = "1.00";
+    this.price = 1.00;
   }
 }
 
+Pizza.prototype.yourCost = function() {
+  return this.yourSizePrice() += this.yourToppingPrice();
+}
+
+var pizzaSize = [];
+var pizzaTopping = [];
+
+var newPizzaOrder = new Pizza(pizzaSize, pizzaTopping)
 
 // Interface Logic here
 $(document).ready(function() {
   $("form#select-order").submit(function(event) {
     event.preventDefault();
-    var pizzaSize = [];
-    var pizzaTopping = [];
     $("input:checkbox[name=size]:checked").each(function(){
       var sizeSelection = $(this).val();
       pizzaSize.push(sizeSelection);
@@ -45,17 +47,17 @@ $(document).ready(function() {
       pizzaTopping.push(toppingSelection);
     });
 
-    $("p#pizza-ordered").show();
-    // Below, this is the price of what your total pizza cost will display eventually.
-    $("ul#your-pizza").append("<li>" + pizza.yourCost() + "</span></li>");
+    $(".summary").show();
+// Below, this is the price of what your total pizza cost will display eventually.
+    // $("ul#your-total").append("<li>" + newPizzaOrder.yourCost() + "</span></li>");
 
+//Shows your order summary.
+    $(".summary").append(pizzaSize + "</br> with: ", pizzaTopping + "<br>");
     // refactor code
-    // $("#your-pizza").append(pizzaSize + "<br>", pizzaTopping + "<br>");
     // $("ul#your-pizza").append("<li>" + pizzaSize + pizzaTopping + "</span></li>");
     // var pizzaSize = $("input#size").val();
     // var pizzaTopping = $("input#topping").val();
 
-    var newPizzaOrder = new Pizza(pizzaSize, pizzaTopping)
 
   });
 });
