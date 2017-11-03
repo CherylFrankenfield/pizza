@@ -15,6 +15,7 @@ Pizza.prototype.yourSizePrice = function() {
   } else if (this.size === "Go-big-or-go-home") {
     this.price = 14.00;
   }
+  return yourSizePrice();
 }
 
 Pizza.prototype.yourToppingPrice = function() {
@@ -23,6 +24,7 @@ Pizza.prototype.yourToppingPrice = function() {
   } else if (this.topping === "pepperoni" || "pineapple") {
     this.price = 1.00;
   }
+  return yourToppingPrice();
 }
 
 Pizza.prototype.yourCost = function() {
@@ -48,17 +50,15 @@ $(document).ready(function() {
     });
 
     $(".summary").show();
-// Below, this is the price of what your total pizza cost will display eventually.
     $(".total").show();
     $("#your-total").append("<li>" + newPizzaOrder.yourCost() + "</span></li>");
 
 //Shows your order summary.
-    $("#your-pizza").append(pizzaSize + "</br> with: ", pizzaTopping + "<br>");
+    $("#your-pizza").append("</br>" + pizzaSize + "</br> with: " , pizzaTopping + "<br>");
     // refactor code
     // $("ul#your-pizza").append("<li>" + pizzaSize + pizzaTopping + "</span></li>");
     // var pizzaSize = $("input#size").val();
     // var pizzaTopping = $("input#topping").val();
-
 
   });
 });

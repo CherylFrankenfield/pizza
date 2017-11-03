@@ -9,9 +9,19 @@
 body {
   font-family: 'Fjalla One', sans-serif;
   background-color: lightblue;
+  font-size: 20px;
 }
+
+/*p {
+  margin: 2em;
+  padding: 4em;
+}*/
 
 .jumbotron {
   background-color: red;
   color: white;
+}
+
+.btn {
+  margin-bottom: 20px;
 }
