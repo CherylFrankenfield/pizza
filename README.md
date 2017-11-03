@@ -37,7 +37,7 @@ _The application will display a list of the user's order._
 
 _The application will display a total price in user order summary._
 * _Example Input: User clicks order button._
-* _Example Output: Order button is clicked, order is displayed below forms and total price of order is displayed._
+* _Example Output: Order button is clicked, order is displayed below and total price of order is displayed._
 
 ## Known Bugs
 
