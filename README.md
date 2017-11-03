@@ -1,6 +1,6 @@
-# Pizza The Hut
+# Pizza The Hutt
 
-##### Javascript Object Practice - A website to order pizza
+##### Javascript Object Practice - A website to order space pizza
 
 #### By Cheryl Frankenfield, 11/3/17
 
@@ -11,11 +11,11 @@ _This website is a demonstration of constructors and prototypes using JavaScript
 ## Setup/Installation Requirements
 
 * Navigate to your terminal.
-* Perform Git clone command on the repo [here.](link)
+* Perform Git clone command on the repo [here.](https://github.com/CherylFrankenfield/pizza.git)
 * Perform Git atom . command to open all files in repo.
-* View index.html in browser and talk to the robot.
+* View index.html in browser and order a pizza.
 * No other setup or install necessary.
-* Or [click here](link) to view in broswer.
+* Or [click here](http://cherylfrankenfield.github.io/pizza/) to view in broswer.
 
 ## Specs
 
@@ -41,7 +41,7 @@ _The application will display a total price in user order summary._
 
 ## Known Bugs
 
-_Goes here_
+_Current bug is on spec 5, which is the pizza total outputting my return prototype function line, rather than the number total._
 
 ## Support and contact details
 
