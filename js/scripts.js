@@ -12,7 +12,7 @@ Pizza.prototype.yourSizePrice = function() {
     this.price = 8.00;
   } else if (this.size === "Boring medium") {
     this.price = 12.00;
-  } else if (this.size === "Go big or go home large") {
+  } else if (this.size === "Go-big-or-go-home") {
     this.price = 14.00;
   }
 }
@@ -49,10 +49,11 @@ $(document).ready(function() {
 
     $(".summary").show();
 // Below, this is the price of what your total pizza cost will display eventually.
-    // $("ul#your-total").append("<li>" + newPizzaOrder.yourCost() + "</span></li>");
+    $(".total").show();
+    $("#your-total").append("<li>" + newPizzaOrder.yourCost() + "</span></li>");
 
 //Shows your order summary.
-    $(".summary").append(pizzaSize + "</br> with: ", pizzaTopping + "<br>");
+    $("#your-pizza").append(pizzaSize + "</br> with: ", pizzaTopping + "<br>");
     // refactor code
     // $("ul#your-pizza").append("<li>" + pizzaSize + pizzaTopping + "</span></li>");
     // var pizzaSize = $("input#size").val();

@@ -1,3 +1,17 @@
 .summary {
   display: none;
 }
+
+.total {
+  display: none;
+}
+
+body {
+  font-family: 'Fjalla One', sans-serif;
+  background-color: lightblue;
+}
+
+.jumbotron {
+  background-color: red;
+  color: white;
+}
