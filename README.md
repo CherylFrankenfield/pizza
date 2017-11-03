@@ -19,7 +19,7 @@ _This website is a demonstration of constructors and prototypes using JavaScript
 
 ## Specs
 
-_The application will display a dropdown list of pizza sizes._
+_The application will display a checklist of pizza sizes._
 * _Example Input: User will select a small pizza option._
 * _Example Output: A small pizza would be selected._
 
