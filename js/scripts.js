@@ -1,5 +1,5 @@
-// Business Logic here
-function Pizza(size, topping, price, yourSizePrice, yourToppingPrice, yourCost) {
+Business Logic here
+function Pizza(size, topping) {
   this.size = size;
   this.topping = topping;
   this.price;
@@ -8,7 +8,7 @@ function Pizza(size, topping, price, yourSizePrice, yourToppingPrice, yourCost) 
   this.yourCost();
 }
 
-Pizza.prototype.yourSizePrice = function(pizzaSize) {
+Pizza.prototype.yourSizePrice = function() {
   if (this.size === "Puny small") {
     this.price = 8.00;
   } else if (this.size === "Boring medium") {
@@ -19,7 +19,7 @@ Pizza.prototype.yourSizePrice = function(pizzaSize) {
   return this.price;
 }
 
-Pizza.prototype.yourToppingPrice = function(pizzaTopping) {
+Pizza.prototype.yourToppingPrice = function() {
   for (index = 0; index <= pizzaTopping; index++) {
     if (this.topping === "extra cheese") {
       this.price = .50;
@@ -39,7 +39,7 @@ Pizza.prototype.yourCost = function() {
   return this.yourCost;
 }
 
-var pizzaSize = [];
+var pizzaSize = " ";
 var pizzaTopping = [];
 
 var newPizzaOrder = new Pizza(pizzaSize, pizzaTopping)
@@ -48,7 +48,7 @@ var newPizzaOrder = new Pizza(pizzaSize, pizzaTopping)
 $(document).ready(function() {
   $("form#select-order").submit(function(event) {
     event.preventDefault();
-    $("input:checkbox[name=size]:checked").each(function(){
+    $("select#select-size").each(function(){
       var sizeSelection = $(this).val();
       pizzaSize.push(sizeSelection);
     });
@@ -58,8 +58,9 @@ $(document).ready(function() {
     });
     $(".summary").show();
     $(".total").show();
+    //Do I need to call the function?
+    // newPizzaOrder.yourCost(this.yourSizePrice, this.yourToppingPrice);
     $("#your-total").append("<br>" + newPizzaOrder.yourCost() + "</span></br>");
-
 //Shows your order summary.
     $("#your-pizza").append("</br>" + pizzaSize + "</br> with: " , pizzaTopping + "<br>");
   });

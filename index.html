@@ -20,11 +20,19 @@
       <div class="row">
         <div class="col-md-7">
           <form id="select-order">
-            <div class="form-group">
+            <!-- <div class="form-group">
               <h3>Select one size for your pizza:</h3>
               <input type="checkbox" name="size" value="Puny small"> Puny small, $8.00<br>
               <input type="checkbox" name="size" value="Boring medium"> Boring medium, $12.00<br>
               <input type="checkbox" name="size" value="Go-big-or-go-home large"> Go-big-or-go-home large, $14.00<br>
+            </div> -->
+            <div class="form-group">
+              <label for="select-size">Select a size for your pizza:</label>
+              <select class="form-control" id="select-size">
+                <option value="Puny small">Puny small, $8.00</option>
+                <option value="Boring medium">Boring medium, $12.00</option>
+                <option value="Go-big-or-go-home large">Go-big-or-go-home large, $14.00</option>
+              </select>
             </div>
             <div class="form-group">
               <h3>Please select from the toppings below:</h3>
