@@ -44,6 +44,7 @@ var pizzaTopping = [];
 Pizza.prototype.yourCost = function() {
   pizzaSize += costOfTopping;
 }
+
 // Interface Logic here
 $(document).ready(function() {
   $("form#select-order").submit(function(event) {
@@ -55,10 +56,9 @@ $(document).ready(function() {
     });
     var newPizzaOrder = new Pizza(pizzaSize, pizzaTopping)
     var costOfTopping = pizzaTopping.reduce(add, 0);
-    console.log(pizzaSize);
     $(".summary").show();
     $(".total").show();
-    $("#your-total").append("<br>" + newPizzaOrder.yourCost() + "</span></br>");
+    $("#your-total").append("<br>" + newPizzaOrder + "</span></br>");
 //Shows your order summary.
     $("#your-pizza").append("</br>" + pizzaSize + "</br> with: " , pizzaTopping + "<br>");
   });
