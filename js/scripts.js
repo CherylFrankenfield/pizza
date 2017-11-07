@@ -3,7 +3,6 @@ function Pizza(size, topping) {
   this.size = size;
   this.topping = topping;
   this.price;
-  this.yourToppingPrice = [];
 }
 
 var add = function(a,b) {
@@ -41,8 +40,6 @@ var add = function(a,b) {
 
 var pizzaSize;
 var pizzaTopping = [];
-var newPizzaOrder = new Pizza(pizzaSize, pizzaTopping)
-var costOfTopping = pizzaTopping.reduce(add, 0);
 
 Pizza.prototype.yourCost = function() {
   pizzaSize += costOfTopping;
@@ -51,14 +48,16 @@ Pizza.prototype.yourCost = function() {
 $(document).ready(function() {
   $("form#select-order").submit(function(event) {
     event.preventDefault();
-    var pizzaSize = $("select#select-size").val();
+    var pizzaSize = parseFloat($("select#select-size").val());
     $("input:checkbox[name=topping]:checked").each(function() {
-      var toppingSelection = $(this).val();
+      var toppingSelection = parseFloat($(this).val());
       pizzaTopping.push(toppingSelection);
     });
+    var newPizzaOrder = new Pizza(pizzaSize, pizzaTopping)
+    var costOfTopping = pizzaTopping.reduce(add, 0);
+    console.log(pizzaSize);
     $(".summary").show();
     $(".total").show();
-
     $("#your-total").append("<br>" + newPizzaOrder.yourCost() + "</span></br>");
 //Shows your order summary.
     $("#your-pizza").append("</br>" + pizzaSize + "</br> with: " , pizzaTopping + "<br>");
