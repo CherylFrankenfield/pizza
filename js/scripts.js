@@ -3,46 +3,53 @@ function Pizza(size, topping) {
   this.size = size;
   this.topping = topping;
   this.price;
+  // this.yourOrderSizeSummary;
+  // this.yourOrderToppingSummary;
+  this.yourCost();
 }
 
 var add = function(a,b) {
   return a + b;
 }
-// Pizza.prototype.yourSizePrice = function() {
-//   if (this.size === "Puny small") {
-//     this.price = 8.00;
-//   } else if (this.size === "Boring medium") {
-//     this.price = 12.00;
-//   } else if (this.size === "Go-big-or-go-home") {
-//     this.price = 14.00;
-//   }
-//   return this.price;
-// }
 
-// Pizza.prototype.yourToppingPrice = function() {
-//   for (index = 0; index <= pizzaTopping; index++) {
-//     if (this.topping === ".50") {
-//       this.topping = .50;
-//     } else if (this.topping === ".75") {
-//       this.price = .75;
-//       yourToppingPrice.push(this.price);
-//     } else if (this.topping === "1.25") {
-//       this.price = 1.25;
-//       yourToppingPrice.push(this.price);
-//     } else if (this.topping === "1.00") {
-//       this.price = 1.00;
-//       yourToppingPrice.push(this.price);
-//     }
-//     return add(yourToppingPrice);
-//   }
-// }
+var yourOrderSizeSummary = function() {
+  if (pizzaSize === 8.00) {
+    yourOrderSizeSummary = "Puny small";
+    toppingSummary.push("Puny small");
+  } else if (pizzaSize === 12.00) {
+    yourOrderSizeSummary = "Boring medium";
+    toppingSummary.push("Boring medium");
+  } else if (pizzaSize === 14.00) {
+    yourOrderSizeSummary = "Go-big-or-go-home";
+    toppingSummary.push("Go-big-or-go-home");
+  }
+}
 
+var yourOrderToppingSummary = function() {
+    if ("topping" === ".50") {
+      yourOrderToppingSummary = "Extra cheese";
+      sizeSummary.push("Extra cheese");
+    } else if ("topping" === ".75") {
+      yourOrderToppingSummary = "Mushroom";
+      sizeSummary.push("Mushroom");
+    } else if ("topping" === "1.25") {
+      yourOrderToppingSummary = "Pepperoni";
+      sizeSummary.push("Pepperoni");
+    } else if ("topping" === "1.00") {
+      yourOrderToppingSummary = "pineapple";
+      sizeSummary.push("pineapple");
+    }
+}
 
 var pizzaSize;
+var costOfTopping;
 var pizzaTopping = [];
+var newPizzaOrder;
+var sizeSummary = [];
+var toppingSummary = [];
 
-Pizza.prototype.yourCost = function() {
-  pizzaSize += costOfTopping;
+Pizza.prototype.yourCost = function(newPizzaOrder) {
+  this.size += this.price;
 }
 
 // Interface Logic here
@@ -54,12 +61,17 @@ $(document).ready(function() {
       var toppingSelection = parseFloat($(this).val());
       pizzaTopping.push(toppingSelection);
     });
+
     var newPizzaOrder = new Pizza(pizzaSize, pizzaTopping)
-    var costOfTopping = pizzaTopping.reduce(add, 0);
+    this.price = pizzaTopping.reduce(add, 0);
+    // console.log(this.price);
+    //Shows your order summary.
+    var sizeSummary1 = yourOrderSizeSummary();
+    var toppingSummary1 = yourOrderToppingSummary();
     $(".summary").show();
     $(".total").show();
-    $("#your-total").append("<br>" + newPizzaOrder + "</span></br>");
-//Shows your order summary.
-    $("#your-pizza").append("</br>" + pizzaSize + "</br> with: " , pizzaTopping + "<br>");
+    $("#your-total").append("<br>" + newPizzaOrder.yourCost() + "</span></br>");
+    $("#your-pizza").append("</br>" + sizeSummary1 + "</br> with: " , toppingSummary1 + "<br>");
+    console.log(sizeSummary1);
   });
 });
