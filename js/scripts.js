@@ -3,8 +3,6 @@ function Pizza(size, topping) {
   this.size = size;
   this.topping = topping;
   this.price;
-  // this.yourOrderSizeSummary;
-  // this.yourOrderToppingSummary;
   this.yourCost();
 }
 
@@ -12,66 +10,38 @@ var add = function(a,b) {
   return a + b;
 }
 
-var yourOrderSizeSummary = function() {
-  if (pizzaSize === 8.00) {
-    yourOrderSizeSummary = "Puny small";
-    toppingSummary.push("Puny small");
-  } else if (pizzaSize === 12.00) {
-    yourOrderSizeSummary = "Boring medium";
-    toppingSummary.push("Boring medium");
-  } else if (pizzaSize === 14.00) {
-    yourOrderSizeSummary = "Go-big-or-go-home";
-    toppingSummary.push("Go-big-or-go-home");
-  }
-}
+// var pizzaSize;
+// var costOfTopping;
+// var newPizzaOrder;
+// var toppingSummary = [];
 
-var yourOrderToppingSummary = function() {
-    if ("topping" === ".50") {
-      yourOrderToppingSummary = "Extra cheese";
-      sizeSummary.push("Extra cheese");
-    } else if ("topping" === ".75") {
-      yourOrderToppingSummary = "Mushroom";
-      sizeSummary.push("Mushroom");
-    } else if ("topping" === "1.25") {
-      yourOrderToppingSummary = "Pepperoni";
-      sizeSummary.push("Pepperoni");
-    } else if ("topping" === "1.00") {
-      yourOrderToppingSummary = "pineapple";
-      sizeSummary.push("pineapple");
-    }
-}
-
-var pizzaSize;
-var costOfTopping;
-var pizzaTopping = [];
-var newPizzaOrder;
-var sizeSummary = [];
-var toppingSummary = [];
-
-Pizza.prototype.yourCost = function(newPizzaOrder) {
-  this.size += this.price;
+Pizza.prototype.yourCost = function() {
+  this.size += this.topping;
 }
 
 // Interface Logic here
 $(document).ready(function() {
   $("form#select-order").submit(function(event) {
     event.preventDefault();
+    var pizzaTopping = [];
     var pizzaSize = parseFloat($("select#select-size").val());
     $("input:checkbox[name=topping]:checked").each(function() {
       var toppingSelection = parseFloat($(this).val());
       pizzaTopping.push(toppingSelection);
+      console.log(pizzaTopping);
     });
 
     var newPizzaOrder = new Pizza(pizzaSize, pizzaTopping)
-    this.price = pizzaTopping.reduce(add, 0);
+    var x = pizzaTopping.reduce(add, 0);
+
+    var total = newPizzaOrder.yourCost();
     // console.log(this.price);
+
     //Shows your order summary.
-    var sizeSummary1 = yourOrderSizeSummary();
-    var toppingSummary1 = yourOrderToppingSummary();
     $(".summary").show();
     $(".total").show();
-    $("#your-total").append("<br>" + newPizzaOrder.yourCost() + "</span></br>");
-    $("#your-pizza").append("</br>" + sizeSummary1 + "</br> with: " , toppingSummary1 + "<br>");
-    console.log(sizeSummary1);
+    $("#your-total").append("<br>" + newPizzaOrder.price + "</span></br>");
+    $("#your-pizza").append("</br>" + newPizzaOrder.size + "</br> with: " , + newPizzaOrder.topping + "<br>");
+
   });
 });
