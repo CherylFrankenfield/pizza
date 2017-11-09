@@ -1,8 +1,8 @@
 // Business Logic here
-function Pizza(toppings, sizeTotal, toppingTotal) {
-  this.toppings = toppings;
+function Pizza(sizeTotal, toppingTotal, toppings) {
   this.sizeTotal = sizeTotal;
   this.toppingTotal = toppingTotal;
+  this.toppings = toppings;
   this.yourCost();
   this.theName();
 }
@@ -17,21 +17,19 @@ Pizza.prototype.theName = function(sizeTotal) {
   }
 }
 
-Pizza.prototype = function() {
-    if ("topping" === ".50") {
-      yourOrderToppingSummary = "Extra cheese";
-      toppingSummary.push("Extra cheese");
-    } else if ("topping" === ".75") {
-      yourOrderToppingSummary = "Mushroom";
-      toppingSummary.push("Mushroom");
-    } else if ("topping" === "1.25") {
-      yourOrderToppingSummary = "Pepperoni";
-      toppingSummary.push("Pepperoni");
-    } else if ("topping" === "1.00") {
-      yourOrderToppingSummary = "pineapple";
-      toppingSummary.push("pineapple");
-    }
-}
+// Pizza.prototype.toppingsList = function(toppingsList) {
+//   for (index = 0; index < toppingSelection; index++) {
+//     if (this.toppingsList === .50) {
+//       return "Extra cheese";
+//     } else if (this.toppingsList === .75) {
+//       return "Mushroom";
+//     } else if (this.toppingsList === 1.25) {
+//       return "Pepperoni";
+//     } else if (this.toppings.List === 1.00) {
+//       return "pineapple";
+//     }
+//   }
+// }
 
 Pizza.prototype.yourCost = function(sizeTotal, toppingTotal) {
   return sizeTotal + toppingTotal
@@ -48,15 +46,13 @@ $(document).ready(function() {
       var toppingSelection = parseFloat($(this).val());
       pizzaToppingTotal = pizzaToppingTotal + toppingSelection;
     });
-
-    toppings = " ";
-    var newPizzaOrder = new Pizza(pizzaToppings, pizzaSizeTotal, pizzaToppingTotal)
+    var pizzaToppings = 0;
+    var newPizzaOrder = new Pizza(pizzaSizeTotal, pizzaToppingTotal, pizzaToppings)
     newPizzaOrder.theName();
-
     //Shows your order summary.
     $(".summary").show();
     $(".total").show();
     $("#your-total").append("<br>" + newPizzaOrder.yourCost(pizzaSizeTotal, pizzaToppingTotal) + "</span></br>");
-    $("#your-pizza").append("</br>" + newPizzaOrder.theName(pizzaSizeTotal) + "</br> with: " , + newPizzaOrder.toppingTotal + "<br>");
+    $("#your-pizza").append("</br>" + newPizzaOrder.theName(pizzaSizeTotal) + "</br> with: " , + newPizzaOrder.toppings + "<br>");
   });
 });
